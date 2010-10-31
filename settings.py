@@ -1,4 +1,9 @@
 # Django settings for mysite project.
+import os
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
