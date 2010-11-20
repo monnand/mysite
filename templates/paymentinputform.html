@@ -1,4 +1,7 @@
-<form action="/addpayment/" method="post">
+{% if errmsg %} 
+<b> {{ errmsg }} </b>
+{% endif %}
+<form action="/addpay/" method="post">
 	{{ form.as_p }}
 	<input type="submit" value="Submit" />
 </form>

@@ -1,0 +1,16 @@
+<table>
+    {% for rcd in rcdlist %}
+    <tr>
+    {% if rcd.is_valid %}
+    <td>{{ rcd.name }}</td>
+    <td>{{ rcd.amount }}</td>
+    <td>{{ rcd.memo }}</td>
+    {% else %}
+    <font color="gray">
+    <td>{{ rcd.name }}</td>
+    <td>{{ rcd.amount }}</td>
+    <td>{{ rcd.memo }}</td>
+    </font>
+    {% endif %}
+    {% endfor %}
+</table>
