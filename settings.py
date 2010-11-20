@@ -8,6 +8,8 @@ sys.setdefaultencoding('utf-8')
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ABSOLUTE_ROOT_PATH = (os.path.dirname(os.path.abspath(__file__)))
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -16,8 +18,8 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'sqlite3.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -36,7 +38,9 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
+
+DEFAULT_CHARESET = 'utf-8'
 
 SITE_ID = 1
 
@@ -86,6 +90,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    ABSOLUTE_ROOT_PATH + '/templates',
 )
 
 INSTALLED_APPS = (
