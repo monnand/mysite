@@ -9,6 +9,10 @@ import os.path
 from accounting.models import PaymentRecord
 from accounting.forms import PaymentInputForm
 
+def render_content(title, content):
+    return render_to_response('accountingmain.html', \
+            {'title': title, 'content': content})
+
 def add_payment(request):
     form = None
     errmsg = ""
@@ -21,18 +25,26 @@ def add_payment(request):
             pr = PaymentRecord(name = name, amount = amount, memo = memo, \
                     is_valid = True, start_time = datetime.datetime.now())
             pr.save()
-            return HttpResponse(form.cleaned_data['name'])
-#            return HttpResponseRedirect('/hello_world/')
+            return HttpResponseRedirect('/vldrcd/')
         else:
-            return render_to_response('paymentinputform.html', \
+            content = render_to_string('paymentinputform.html', \
                     {'form': form, 'errmsg': errmsg})
+            return render_to_response('accountingmain.html', \
+                    {'title': 'New Payment Record', 'content': content})
     else:
         form = PaymentInputForm()
-    return render_to_response('paymentinputform.html', \
+    content = render_to_string('paymentinputform.html', \
             {'form': form, 'errmsg': errmsg})
+    return render_content('New Payment Record', content)
 
 def show_all_rcd(request):
     rcdlist = PaymentRecord.objects.all()
-    return render_to_response('rcdlist.html', \
+    content = render_to_string('rcdlist.html', \
             {'rcdlist': rcdlist})
+    return render_content('All Records', content)
 
+def show_valid_rcd(request):
+    rcdlist = PaymentRecord.objects.filter(is_valid = True)
+    content = render_to_string('rcdlist.html', \
+            {'rcdlist': rcdlist})
+    return render_content('All Records', content)

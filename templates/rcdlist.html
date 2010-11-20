@@ -1,8 +1,9 @@
-<table>
+<table border="1">
 	<tr>
 		<td> Payer </td>
 		<td> Amount </td>
 		<td> Memo </td>
+        <td> Time </td>
 	</tr>
     {% for rcd in rcdlist %}
     <tr>
@@ -10,11 +11,13 @@
     <td>{{ rcd.name }}</td>
     <td>{{ rcd.amount }}</td>
     <td>{{ rcd.memo }}</td>
+    <td>{{ rcd.start_time }}</td>
     {% else %}
     <font color="gray">
     <td>{{ rcd.name }}</td>
     <td>{{ rcd.amount }}</td>
     <td>{{ rcd.memo }}</td>
+    <td>{{ rcd.start_time }}</td>
     </font>
     {% endif %}
     {% endfor %}

@@ -16,4 +16,5 @@ urlpatterns = patterns('',
     (r'^hello_world/', 'mysite.testcases.hello.hello_world'),
     (r'^addpay/', 'mysite.accounting.views.add_payment'),
     (r'^allrcd/', 'mysite.accounting.views.show_all_rcd'),
+    (r'^vldrcd/', 'mysite.accounting.views.show_valid_rcd'),
 )
