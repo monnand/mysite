@@ -6,7 +6,7 @@ import datetime
 import os
 import os.path
 
-from accounting.models import PaymentRecord
+from accounting.models import PaymentRecord, SubmissionInfo
 from accounting.forms import PaymentInputForm
 
 def render_content(title, content):
@@ -22,9 +22,16 @@ def add_payment(request):
             name = form.cleaned_data['name']
             amount = form.cleaned_data['amount']
             memo = form.cleaned_data['memo']
+            now = datetime.datetime.now()
             pr = PaymentRecord(name = name, amount = amount, memo = memo, \
-                    is_valid = True, start_time = datetime.datetime.now())
+                    is_valid = True, start_time = now)
             pr.save()
+            header = request.META['HTTP_HOST']
+            agent = request.META['HTTP_USER_AGENT']
+            host = request.META['REMOTE_ADDR']
+            info = SubmissionInfo(payment = pr, user_agent = agent, \
+                    header = header, remote_addr = host, submission_time = now)
+            info.save()
             return HttpResponseRedirect('/vldrcd/')
         else:
             content = render_to_string('paymentinputform.html', \
@@ -48,3 +55,9 @@ def show_valid_rcd(request):
     content = render_to_string('rcdlist.html', \
             {'rcdlist': rcdlist})
     return render_content('All Records', content)
+
+def show_submission_info(request, prid):
+    infos = SubmissionInfo.objects.filter(payment__id = prid)
+    content = render_to_string('submissioninfo.html', \
+            {'info':infos[0]})
+    return render_content('Details', content)

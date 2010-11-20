@@ -6,3 +6,10 @@ class PaymentRecord(models.Model):
     memo = models.TextField()
     is_valid = models.BooleanField()
     start_time = models.DateTimeField()
+
+class SubmissionInfo(models.Model):
+    payment = models.OneToOneField(PaymentRecord, primary_key = True)
+    user_agent = models.TextField()
+    header = models.TextField()
+    remote_addr = models.IPAddressField()
+    submission_time = models.DateTimeField()

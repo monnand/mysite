@@ -4,6 +4,7 @@
 		<td> Amount </td>
 		<td> Memo </td>
         <td> Time </td>
+        <td> Details </td>
 	</tr>
     {% for rcd in rcdlist %}
     <tr>
@@ -12,12 +13,14 @@
     <td>{{ rcd.amount }}</td>
     <td>{{ rcd.memo }}</td>
     <td>{{ rcd.start_time }}</td>
+	<td><a href="/submissioninfo/{{ rcd.id }}">More details</a></td>
     {% else %}
     <font color="gray">
     <td>{{ rcd.name }}</td>
     <td>{{ rcd.amount }}</td>
     <td>{{ rcd.memo }}</td>
     <td>{{ rcd.start_time }}</td>
+	<td><a href="/submissioninfo/{{ rcd.id }}">More details</a></td>
     </font>
     {% endif %}
     {% endfor %}
