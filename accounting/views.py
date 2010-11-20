@@ -6,8 +6,8 @@ import datetime
 import os
 import os.path
 
-from forms.paymentinput import PaymentInputForm
-from accounting.paymentrcd import PaymentRecord
+from accounting.models import PaymentRecord
+from accounting.forms import PaymentInputForm
 
 def add_payment(request):
     form = None
