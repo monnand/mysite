@@ -90,6 +90,15 @@ def get_defaulters_str(prid):
         ds = "All Others"
     return ds
 
+def del_payment(request, prid):
+    payment = PaymentRecord.objects.filter(id = prid)
+    if payment:
+        payment.delete()
+        PaymentComment.objects.filter(payment__id = prid).delete()
+        SubmissionInfo.objects.filter(payment__id = prid).delete()
+        PaymentDefaulterMap.objects.filter(payment__id = prid).delete()
+    return HttpResponseRedirect('/vldrcd/')
+
 def show_payment_comment(request, prid):
     defaulters = get_defaulters_str(prid)
     payment = PaymentRecord.objects.filter(id = prid)

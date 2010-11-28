@@ -6,6 +6,7 @@
         <td> Time </td>
         <td> Details </td>
         <td> Comments </td>
+        <td> Delete </td>
 	</tr>
     {% for rcd in rcdlist %}
     <tr>
@@ -16,6 +17,7 @@
     <td>{{ rcd.start_time }}</td>
 	<td><a href="/submissioninfo/{{ rcd.id }}">More details</a></td>
 	<td><a href="/paymentcomment/{{ rcd.id }}">Comments</a></td>
+	<td><a href="/delpayment/{{ rcd.id }}">Delete</a></td>
     {% else %}
     <font color="gray">
     <td>{{ rcd.name }}</td>
