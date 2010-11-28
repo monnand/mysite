@@ -1,0 +1,22 @@
+<p>
+<b>付款人:</b> {{ rcd.name }} <br />
+<b>欠款人:</b> {{ defaulters }} <br />
+<b>金额:</b> {{ rcd.amount }} <br />
+<b>提交日期:</b> {{ rcd.start_time }} <br />
+</p>
+
+<p>
+<ul>
+	{% for c in comments %}
+	<li>
+	{{ c.name }} @ {{c.time }} <br />
+	{{ c.comment }}
+	</li>
+	{% endfor %}
+</ul>
+
+<form action="/paymentcomment/{{ rcd.id }}" method="post">
+	{{ form.as_p }}
+	<input type="submit" value="Submit" />
+</form>
+

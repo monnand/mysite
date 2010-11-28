@@ -15,6 +15,12 @@ class SubmissionInfo(models.Model):
     submission_time = models.DateTimeField()
 
 class PaymentDefaulterMap(models.Model):
-    payment = models.OneToOneField(PaymentRecord)
+    payment = models.ForeignKey(PaymentRecord)
     defaulter = models.TextField()
+
+class PaymentComment(models.Model):
+    payment = models.ForeignKey(PaymentRecord)
+    name = models.CharField(max_length=32)
+    comment = models.TextField()
+    time = models.DateTimeField()
 

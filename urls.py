@@ -19,4 +19,5 @@ urlpatterns = patterns('',
     (r'^allrcd/', 'mysite.accounting.views.show_all_rcd'),
     (r'^vldrcd/', 'mysite.accounting.views.show_valid_rcd'),
     (r'^submissioninfo/(\d+)$', 'mysite.accounting.views.show_submission_info'),
+    (r'^paymentcomment/(\d+)$', 'mysite.accounting.views.show_payment_comment'),
 )

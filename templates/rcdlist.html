@@ -14,6 +14,7 @@
     <td>{{ rcd.memo }}</td>
     <td>{{ rcd.start_time }}</td>
 	<td><a href="/submissioninfo/{{ rcd.id }}">More details</a></td>
+	<td><a href="/paymentcomment/{{ rcd.id }}">Comments</a></td>
     {% else %}
     <font color="gray">
     <td>{{ rcd.name }}</td>
@@ -21,6 +22,7 @@
     <td>{{ rcd.memo }}</td>
     <td>{{ rcd.start_time }}</td>
 	<td><a href="/submissioninfo/{{ rcd.id }}">More details</a></td>
+	<td><a href="/paymentcomment/{{ rcd.id }}">Comments</a></td>
     </font>
     {% endif %}
     {% endfor %}
