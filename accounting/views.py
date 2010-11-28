@@ -11,6 +11,7 @@ from accounting.models import PaymentRecord
 from accounting.models import SubmissionInfo
 from accounting.models import PaymentDefaulterMap
 from accounting.models import PaymentComment
+from accounting.models import ShortMessage
 from accounting.forms import PaymentInputForm
 from accounting.forms import PaymentCommentForm
 
@@ -56,6 +57,15 @@ def add_payment(request):
     content = render_to_string('paymentinputform.html', \
             {'form': form, 'errmsg': errmsg})
     return render_content('New Payment Record', content)
+
+def get_recent_messages_on_board(form, redirect, n):
+    msgs = []
+    if n <= 0:
+        msgs = ShortMessage.objects.all()
+    else:
+        msgs = ShortMessage.objects.all()[0:n]
+    ret = render_to_string('messageboard.html', \
+            {'form':form, 'comments':msgs, 'url': redirect})
 
 def show_all_rcd(request):
     rcdlist = PaymentRecord.objects.all()

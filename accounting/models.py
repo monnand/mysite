@@ -24,3 +24,9 @@ class PaymentComment(models.Model):
     comment = models.TextField()
     time = models.DateTimeField()
 
+class ShortMessage(models.Model):
+    name = models.CharField(max_length=32)
+    comment = models.TextField()
+    time = models.DateTimeField()
+    class Meta:
+        ordering = ['-time']
