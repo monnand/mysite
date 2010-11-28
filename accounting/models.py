@@ -13,3 +13,8 @@ class SubmissionInfo(models.Model):
     header = models.TextField()
     remote_addr = models.IPAddressField()
     submission_time = models.DateTimeField()
+
+class PaymentDefaulterMap(models.Model):
+    payment = models.OneToOneField(PaymentRecord)
+    defaulter = models.TextField()
+
