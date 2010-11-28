@@ -8,4 +8,4 @@ class PaymentInputForm(forms.Form):
 
 class PaymentCommentForm(forms.Form):
     name = forms.CharField(max_length=32)
-    comment = forms.CharField()
+    comment = forms.CharField(widget=forms.Textarea)
